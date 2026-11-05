@@ -1,0 +1,1 @@
+{"id":"com.jpenz.greekhub.teams","version":"1.0.0","name":"My Teams","description":"AEK, Detroit, Michigan State and Greek clubs.","resources":["catalog",{"name":"meta","types":["movie"],"idPrefixes":["ghg"]},{"name":"stream","types":["movie"],"idPrefixes":["ghg"]}],"types":["movie"],"idPrefixes":["ghg"],"catalogs":[{"type":"movie","id":"ghteams","name":"My Teams"}]}

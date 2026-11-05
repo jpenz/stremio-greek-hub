@@ -5,80 +5,112 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#0b0d10">
 <meta name="robots" content="noindex">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Greek Live">
 <title>Greek Live</title>
 <link rel="preconnect" href="https://i.ytimg.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=GFS+Didot&family=Commissioner:wght@400;500;600;700&display=swap">
 <style>
-/* A dark stage: one featured performance, then poster shelves. Any filter turns shelves into a full tile wall. */
+/* A dark stage: rotating top shelf, personal rows, themed shelves. Tiles open a detail page before anything plays. */
 :root {
   color-scheme: dark;
-  --bg: #0b0d10; --raise: #161a1f; --line: #2a3038; --ink: #f2f4f6; --muted: #a4aeb8;
-  --accent: #e8b84a; --accent-ink: #1a1405; --hd: #7fd4c1;
+  --bg: #0b0d10; --raise: #161a1f; --raise2: #20262d; --line: #2a3038; --ink: #f2f4f6; --muted: #a4aeb8;
+  --accent: #e8b84a; --accent-ink: #1a1405; --hd: #7fd4c1; --bad: #ff9d8a;
   --display: "GFS Didot", Georgia, serif;
   --body: "Commissioner", -apple-system, "Segoe UI", Roboto, sans-serif;
-  --gutter: max(16px, env(safe-area-inset-left, 0px));
+  --gl: max(16px, env(safe-area-inset-left, 0px)); --gr: max(16px, env(safe-area-inset-right, 0px));
 }
 * { box-sizing: border-box; }
 html, body { margin: 0; background: var(--bg); color: var(--ink); font: 400 15px/1.45 var(--body); }
 button, input, select { font: inherit; color: inherit; }
 :focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
-.bar { position: sticky; top: 0; z-index: 20; display: flex; gap: 12px; align-items: center;
-  padding: max(10px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) 10px var(--gutter);
+[hidden] { display: none !important; }
+.bar { position: sticky; top: 0; z-index: 20; display: flex; gap: 10px; align-items: center;
+  padding: max(10px, env(safe-area-inset-top, 0px)) var(--gr) 10px var(--gl);
   background: rgba(11, 13, 16, .92); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
-.brand { font: 400 1.5rem/1 var(--display); white-space: nowrap; }
+.brand { font: 400 1.5rem/1 var(--display); white-space: nowrap; background: none; border: 0; padding: 0; cursor: pointer; }
 .bar input { flex: 1; min-width: 0; background: var(--raise); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
-.hero { position: relative; min-height: min(62vh, 620px); display: flex; align-items: flex-end; overflow: hidden; background: var(--raise); }
+.btn { border: 0; border-radius: 8px; padding: 11px 18px; font-weight: 700; cursor: pointer; text-decoration: none; background: var(--raise2); color: var(--ink); display: inline-block; white-space: nowrap; }
+.btn.main { background: var(--accent); color: var(--accent-ink); }
+.hero { position: relative; min-height: min(66vh, 660px); display: flex; align-items: flex-end; overflow: hidden; background: var(--raise); }
 .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg) 2%, rgba(11,13,16,.55) 45%, rgba(11,13,16,.15)); }
-.hero-copy { position: relative; z-index: 1; display: grid; gap: 10px; max-width: 760px; padding: 28px max(16px, env(safe-area-inset-right, 0px)) 24px var(--gutter); }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg) 2%, rgba(11,13,16,.6) 42%, rgba(11,13,16,.12)), linear-gradient(90deg, rgba(11,13,16,.7), transparent 60%); }
+.hero-copy { position: relative; z-index: 1; display: grid; gap: 10px; max-width: 780px; padding: 28px var(--gr) 22px var(--gl); }
 .hero h1 { font: 400 clamp(1.8rem, 4.6vw, 3.4rem)/1.08 var(--display); margin: 0; text-wrap: balance; overflow-wrap: anywhere; }
 .line { color: var(--muted); }
 .cta { display: flex; flex-wrap: wrap; gap: 10px; }
-.btn { border: 0; border-radius: 8px; padding: 11px 18px; font-weight: 700; cursor: pointer; text-decoration: none; background: var(--raise); color: var(--ink); display: inline-block; }
-.btn.main { background: var(--accent); color: var(--accent-ink); }
-.controls { display: grid; gap: 10px; padding: 16px max(16px, env(safe-area-inset-right, 0px)) 6px var(--gutter); }
-.chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; scrollbar-width: none; }
+.dots { display: flex; gap: 2px; }
+.dots button { width: 30px; height: 28px; padding: 0; background: none; border: 0; cursor: pointer; display: grid; place-items: center; }
+.dots span { display: block; width: 22px; height: 4px; border-radius: 2px; background: rgba(255,255,255,.3); }
+.dots button[aria-current="true"] span { background: var(--ink); }
+.controls { display: grid; gap: 10px; padding: 14px var(--gr) 4px var(--gl); }
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 3px; scrollbar-width: none; }
 .chips button { flex: none; border: 1px solid var(--line); background: var(--raise); border-radius: 999px; padding: 8px 14px; font-weight: 600; cursor: pointer; white-space: nowrap; }
 .chips button[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
 .selects { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
 .selects label { display: grid; gap: 3px; font-size: .78rem; color: var(--muted); min-width: 0; }
 .selects select { background: var(--raise); border: 1px solid var(--line); border-radius: 8px; padding: 9px; width: 100%; color: var(--ink); }
-.count { color: var(--muted); padding: 8px max(16px, env(safe-area-inset-right, 0px)) 0 var(--gutter); font-size: .875rem; }
-.shelf { padding-block: 14px 4px; }
-.shelf h2 { font: 400 1.5rem/1.2 var(--display); margin: 0 0 10px; padding-left: var(--gutter); }
-.track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 22vw); gap: 12px; overflow-x: auto; padding: 4px max(16px, env(safe-area-inset-right, 0px)) 12px var(--gutter); scroll-snap-type: x proximity; scrollbar-width: thin; }
-.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px 12px; padding: 14px max(16px, env(safe-area-inset-right, 0px)) 40px var(--gutter); }
-.tile { display: grid; gap: 7px; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; scroll-snap-align: start; min-width: 0; border-radius: 10px; }
-.art { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: var(--raise); }
-.art img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .25s ease; }
-.tile:hover .art img, .tile:focus-visible .art img { transform: scale(1.05); }
+.count { color: var(--muted); padding: 8px var(--gr) 0 var(--gl); font-size: .875rem; }
+.shelf { padding-block: 14px 2px; }
+.shelf h2 { font: 400 1.5rem/1.2 var(--display); margin: 0 0 8px; padding-left: var(--gl); }
+.track { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(250px, 22vw); gap: 12px; overflow-x: auto; padding: 6px var(--gr) 12px var(--gl); scroll-snap-type: x proximity; scroll-padding-left: var(--gl); scrollbar-width: none; }
+.wall { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px 12px; padding: 14px var(--gr) 40px var(--gl); }
+.tile { display: grid; gap: 7px; align-content: start; background: none; border: 0; padding: 0; text-align: left; cursor: pointer; scroll-snap-align: start; min-width: 0; border-radius: 10px; }
+.art { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px; background: linear-gradient(110deg, var(--raise) 40%, var(--raise2) 50%, var(--raise) 60%); background-size: 300% 100%; animation: shine 1.6s linear infinite; transition: transform .18s ease, box-shadow .18s ease; }
+@keyframes shine { to { background-position: -150% 0; } }
+.art img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.tile:hover .art, .tile:focus-visible .art { transform: scale(1.04); box-shadow: 0 10px 28px rgba(0,0,0,.6); }
+.tile:focus-visible { outline: none; }
+.tile:focus-visible .art { outline: 3px solid var(--ink); outline-offset: 2px; }
 .badge { position: absolute; bottom: 6px; padding: 2px 7px; border-radius: 5px; background: rgba(0,0,0,.8); font-size: .75rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 .badge.len { right: 6px; }
 .badge.q { left: 6px; color: var(--hd); }
+.prog { position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: rgba(255,255,255,.25); }
+.prog i { display: block; height: 100%; background: var(--accent); }
+.seen { position: absolute; top: 6px; right: 6px; padding: 2px 7px; border-radius: 5px; background: rgba(0,0,0,.8); font-size: .75rem; font-weight: 700; }
 .name { font-weight: 600; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; overflow-wrap: anywhere; }
 .sub { color: var(--muted); font-size: .8125rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.artist .art::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, rgba(0,0,0,.85), transparent 65%); }
+.artist .label { position: absolute; left: 10px; right: 10px; bottom: 8px; z-index: 1; font: 400 1.3rem/1.15 var(--display); }
 .sentinel { height: 1px; }
-dialog { width: min(1180px, 100vw); max-width: 100vw; max-height: 100dvh; border: 0; padding: 0; background: var(--bg); color: var(--ink); border-radius: 12px; }
-dialog::backdrop { background: rgba(0,0,0,.86); }
-.frame { aspect-ratio: 16 / 9; background: #000; }
-.frame iframe { width: 100%; height: 100%; border: 0; display: block; }
-.info { display: grid; gap: 10px; padding: 14px 16px 18px; }
-.info h2 { font: 400 1.5rem/1.2 var(--display); margin: 0; overflow-wrap: anywhere; }
-.empty { padding: 40px var(--gutter); color: var(--muted); }
+dialog { width: 100vw; height: 100dvh; max-width: 100vw; max-height: 100dvh; margin: 0; border: 0; padding: 0; background: var(--bg); color: var(--ink); overflow-y: auto; }
+dialog::backdrop { background: #000; }
+.close { position: fixed; top: max(12px, env(safe-area-inset-top, 0px)); right: var(--gr); z-index: 5; }
+.d-hero { position: relative; aspect-ratio: 21 / 9; min-height: 240px; max-height: 58vh; width: 100%; overflow: hidden; background: var(--raise); }
+.d-hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.d-hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, var(--bg), transparent 55%); }
+.d-copy { display: grid; gap: 12px; max-width: 900px; padding: 0 var(--gr) 10px var(--gl); margin-top: -40px; position: relative; z-index: 1; }
+.d-copy h2 { font: 400 clamp(1.6rem, 3.6vw, 2.6rem)/1.12 var(--display); margin: 0; overflow-wrap: anywhere; text-wrap: balance; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px; }
+.facts span { background: var(--raise2); border-radius: 6px; padding: 3px 9px; font-size: .8125rem; font-weight: 600; }
+.stage { position: relative; width: 100%; height: 100%; background: #000; display: grid; }
+.stage > div:first-child, .stage iframe { width: 100%; height: 100%; border: 0; }
+.next { position: absolute; right: var(--gr); bottom: 76px; width: min(340px, calc(100vw - 32px)); background: rgba(22,26,31,.96); border-radius: 12px; padding: 12px; display: grid; gap: 8px; z-index: 3; }
+.next img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; }
+.blocked { position: absolute; inset: 0; display: grid; place-content: center; gap: 12px; padding: 20px; text-align: center; background: var(--bg); z-index: 2; }
+.seasons { padding: 6px var(--gr) 0 var(--gl); }
+.eps { display: grid; padding: 8px var(--gr) 40px var(--gl); max-width: 1000px; }
+.ep { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 14px; padding: 12px 6px; background: none; border: 0; border-bottom: 1px solid var(--line); color: inherit; text-align: left; cursor: pointer; border-radius: 8px; }
+.ep .art { animation: none; }
+.empty { padding: 40px var(--gl); color: var(--muted); }
+.note { color: var(--muted); font-size: .8125rem; padding: 22px var(--gr) 34px var(--gl); max-width: 70ch; }
 @media (max-width: 720px) {
   .selects { grid-template-columns: 1fr 1fr; }
   .track { grid-auto-columns: 74vw; }
   .wall { grid-template-columns: 1fr; }
-  .hero { min-height: 52vh; }
+  .hero { min-height: 56vh; }
+  .ep { grid-template-columns: 128px minmax(0, 1fr); gap: 10px; }
+  .d-hero { aspect-ratio: 16 / 9; }
 }
-@media (prefers-reduced-motion: reduce) { .art img { transition: none; } }
+@media (prefers-reduced-motion: reduce) { .art { transition: none; animation: none; } }
 </style>
 </head>
 <body>
 <div class="bar">
-  <div class="brand">Greek Live</div>
+  <button class="brand" id="home" type="button">Greek Live</button>
   <input id="q" type="search" placeholder="Search artist, song or place" aria-label="Search" autocomplete="off">
+  <button class="btn" id="surprise" type="button">Surprise me</button>
 </div>
 <section class="hero" id="hero" aria-label="Featured"></section>
 <div class="controls">
@@ -100,18 +132,21 @@ dialog::backdrop { background: rgba(0,0,0,.86); }
 </div>
 <div class="count" id="count" aria-live="polite"></div>
 <main id="main"></main>
-<dialog id="player" aria-label="Video player">
-  <div class="frame" id="frame"></div>
-  <div class="info">
-    <h2 id="p-title"></h2>
-    <div class="line" id="p-line"></div>
-    <div class="cta">
-      <a class="btn" id="p-yt" target="_blank" rel="noopener">Open in YouTube</a>
-      <a class="btn" id="p-st">Open in Stremio</a>
-      <button class="btn" id="p-close" type="button">Close</button>
-    </div>
-  </div>
+<p class="note">Continue Watching and My List are saved on this device only. Videos are YouTube uploads, mostly by fans, so picture quality varies and some can disappear.</p>
+
+<dialog id="detail" aria-label="Video details">
+  <button class="btn close" data-close type="button">Close</button>
+  <div id="detail-body"></div>
 </dialog>
+<dialog id="show" aria-label="Στην υγειά μας">
+  <button class="btn close" data-close type="button">Close</button>
+  <div id="show-body"></div>
+</dialog>
+<dialog id="player" aria-label="Video player">
+  <button class="btn close" id="p-close" type="button">Close</button>
+  <div class="stage" id="stage"></div>
+</dialog>
+
 <script>
 const TYPES = ["All", "Concerts", "Stin Ygeia Mas", "Panigiri and Glenti", "TV Shows", "Tributes"];
 const STYLES = ["All styles", "Laïko", "Rebetiko", "Entechno", "Pop", "Epirus", "Regional"];
@@ -122,47 +157,235 @@ const toGreek = s => s.replace(/th/g,"θ").replace(/ch/g,"χ").replace(/ps/g,"ψ
 const $ = id => document.getElementById(id);
 const el = (tag, cls, text) => { const n = document.createElement(tag); if (cls) n.className = cls; if (text != null) n.textContent = text; return n; };
 const hex = s => [...new TextEncoder().encode(s)].map(b => b.toString(16).padStart(2, "0")).join("");
+const reduced = matchMedia("(prefers-reduced-motion: reduce)").matches;
 const state = { type: "All", style: "All styles" };
-let all = [], list = [], shown = 0, observer;
+let all = [], byId = {}, list = [], shown = 0, observer, heroTimer, heroIndex = 0, heroPicks = [];
 
-function tile(v) {
-  const b = el("button", "tile");
-  b.type = "button";
+/* Per-device memory */
+const KEY = "greek-live-v1";
+let mem = { prog: {}, list: [], seen: {} };
+try { mem = { ...mem, ...JSON.parse(localStorage.getItem(KEY) || "{}") }; } catch (e) {}
+const save = () => { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) {} };
+const inList = id => mem.list.includes(id);
+const toggleList = id => { mem.list = inList(id) ? mem.list.filter(x => x !== id) : [id, ...mem.list]; save(); };
+const fraction = id => { const p = mem.prog[id]; return p && p.d ? p.t / p.d : 0; };
+
+/* Tiles */
+function artFor(v) {
   const art = el("div", "art");
   const img = el("img");
   img.src = v.thumb; img.alt = ""; img.loading = "lazy"; img.decoding = "async";
   img.onerror = () => { if (!img.dataset.f) { img.dataset.f = 1; img.src = "https://i.ytimg.com/vi/" + v.id + "/hqdefault.jpg"; } };
   art.append(img, el("span", "badge len", v.length));
   if (v.quality !== "SD") art.append(el("span", "badge q", v.quality));
-  b.append(art, el("div", "name", v.title), el("div", "sub", [v.type, v.channel].filter(Boolean).join(" · ")));
-  b.addEventListener("click", () => play(v));
+  if (mem.seen[v.id]) art.append(el("span", "seen", "Watched"));
+  const f = fraction(v.id);
+  if (f > 0) { const p = el("div", "prog"), i = el("i"); i.style.width = Math.round(f * 100) + "%"; p.append(i); art.append(p); }
+  return art;
+}
+function tile(v) {
+  const b = el("button", "tile");
+  b.type = "button";
+  b.append(artFor(v), el("div", "name", v.title), el("div", "sub", [v.type, v.channel].filter(Boolean).join(" · ")));
+  b.addEventListener("click", () => openDetail(v));
   return b;
 }
-function play(v) {
-  $("frame").replaceChildren();
-  const f = el("iframe");
-  f.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0";
-  f.allow = "autoplay; fullscreen; encrypted-media; picture-in-picture";
-  f.allowFullscreen = true; f.title = v.title;
-  $("frame").append(f);
-  $("p-title").textContent = v.title;
-  $("p-line").textContent = [v.length, v.type, v.style, v.channel].filter(Boolean).join(" · ");
-  $("p-yt").href = "https://www.youtube.com/watch?v=" + v.id;
-  const sid = "ghm" + hex(v.id);
-  $("p-st").href = "stremio:///detail/movie/" + sid + "/" + sid;
-  $("player").showModal();
+function artistTile(name, videos) {
+  const b = el("button", "tile artist");
+  b.type = "button";
+  const art = el("div", "art");
+  const img = el("img"); img.src = videos[0].thumb; img.alt = ""; img.loading = "lazy";
+  art.append(img, el("div", "label", name));
+  b.append(art, el("div", "sub", videos.length + " videos"));
+  b.addEventListener("click", () => { $("artist").value = name; render(); scrollTo({ top: 0 }); });
+  return b;
 }
-function closePlayer() { $("frame").replaceChildren(); if ($("player").open) $("player").close(); }
-$("p-close").addEventListener("click", closePlayer);
-$("player").addEventListener("close", () => $("frame").replaceChildren());
-$("player").addEventListener("click", e => { if (e.target === $("player")) closePlayer(); });
+function shelf(title, items) {
+  if (!items.length) return null;
+  const s = el("section", "shelf");
+  s.append(el("h2", "", title));
+  const t = el("div", "track");
+  t.append(...items);
+  s.append(t);
+  return s;
+}
+const tiles = (videos, n = 24) => videos.slice(0, n).map(tile);
 
-function chips(id, names, key) {
+/* Recommendations from this device's history */
+function similar(v, n = 18) {
+  const hash = s => [...s].reduce((a, c) => (a * 31 + c.charCodeAt(0)) >>> 0, 7);
+  return all.filter(x => x.id !== v.id && !mem.seen[x.id]).map(x => ({ x, s:
+    (v.artist && x.artist === v.artist ? 6 : 0) + (v.style && x.style === v.style ? 3 : 0) + (x.type === v.type ? 2 : 0) +
+    (x.quality !== "SD" ? 1 : 0) + (hash(x.id + v.id) % 100) / 100 }))
+    .sort((a, b) => b.s - a.s).slice(0, n).map(o => o.x);
+}
+
+/* Detail page */
+function openDetail(v) {
+  const body = $("detail-body");
+  const hero = el("div", "d-hero");
+  const img = el("img"); img.src = v.thumb; img.alt = ""; hero.append(img);
+  const copy = el("div", "d-copy");
+  const facts = el("div", "facts");
+  [v.length, v.quality === "SD" ? "" : v.quality, v.type, v.style, v.clip === "songs" ? "Songs only" : ""].filter(Boolean).forEach(t => facts.append(el("span", "", t)));
+  const cta = el("div", "cta");
+  const f = fraction(v.id);
+  const go = el("button", "btn main", f > 0.01 ? "Resume" : "Play"); go.type = "button"; go.addEventListener("click", () => play(v));
+  const mine = el("button", "btn", inList(v.id) ? "In My List" : "Add to My List"); mine.type = "button";
+  mine.addEventListener("click", () => { toggleList(v.id); mine.textContent = inList(v.id) ? "In My List" : "Add to My List"; });
+  const yt = el("a", "btn", "Open in YouTube"); yt.href = "https://www.youtube.com/watch?v=" + v.id; yt.target = "_blank"; yt.rel = "noopener";
+  const sid = "ghm" + hex(v.id);
+  const st = el("a", "btn", "Open in Stremio"); st.href = "stremio:///detail/movie/" + sid + "/" + sid;
+  cta.append(go, mine, yt, st);
+  if (f > 0.01) {
+    const over = el("button", "btn", "Start over"); over.type = "button";
+    over.addEventListener("click", () => { delete mem.prog[v.id]; save(); play(v); });
+    cta.insertBefore(over, mine);
+  }
+  copy.append(el("h2", "", v.title), facts, el("div", "line", "Uploaded by " + (v.channel || "unknown")), cta);
+  const parts = [hero, copy];
+  if (v.artist) {
+    const more = all.filter(x => x.artist === v.artist && x.id !== v.id).sort(best);
+    const s = shelf("More from " + v.artist, tiles(more, 18));
+    if (s) parts.push(s);
+  }
+  const s2 = shelf("More like this", tiles(similar(v)));
+  if (s2) parts.push(s2);
+  body.replaceChildren(...parts);
+  if (!$("detail").open) $("detail").showModal();
+  $("detail").scrollTop = 0;
+  go.focus();
+}
+
+/* Player with resume, progress and Up Next */
+let ytReady, yt, current, ticker, countdown;
+function loadApi() {
+  if (ytReady) return ytReady;
+  ytReady = new Promise((ok, no) => {
+    window.onYouTubeIframeAPIReady = ok;
+    const s = document.createElement("script");
+    s.src = "https://www.youtube.com/iframe_api"; s.onerror = no;
+    document.head.append(s);
+    setTimeout(no, 10000);
+  });
+  return ytReady;
+}
+function saveProgress() {
+  if (!yt || !current || !yt.getCurrentTime) return;
+  const t = yt.getCurrentTime(), d = yt.getDuration();
+  if (!d || t < 20) return;
+  if (t / d > 0.95) { delete mem.prog[current.id]; mem.seen[current.id] = Date.now(); }
+  else mem.prog[current.id] = { t: Math.floor(t), d: Math.floor(d), at: Date.now() };
+  save();
+}
+function blocked(v) {
+  const box = el("div", "blocked");
+  const a = el("a", "btn main", "Open in YouTube"); a.href = "https://www.youtube.com/watch?v=" + v.id; a.target = "_blank"; a.rel = "noopener";
+  box.append(el("p", "", "This uploader doesn't allow playing here."), a);
+  $("stage").append(box);
+}
+function upNext(v) {
+  const next = similar(v, 1)[0];
+  if (!next) return;
+  let left = 8;
+  const box = el("div", "next");
+  const img = el("img"); img.src = next.thumb; img.alt = "";
+  const label = el("div", "sub", "Up next in " + left + " seconds");
+  const cta = el("div", "cta");
+  const now = el("button", "btn main", "Play now"); now.type = "button";
+  const stop = el("button", "btn", "Cancel"); stop.type = "button";
+  cta.append(now, stop);
+  box.append(label, img, el("div", "name", next.title), cta);
+  $("stage").append(box);
+  const go = () => { clearInterval(countdown); play(next); };
+  now.addEventListener("click", go);
+  stop.addEventListener("click", () => { clearInterval(countdown); box.remove(); });
+  countdown = setInterval(() => { left -= 1; label.textContent = "Up next in " + left + " seconds"; if (left <= 0) go(); }, 1000);
+  now.focus();
+}
+async function play(v) {
+  stopPlayer();
+  current = v;
+  const stage = $("stage");
+  const slot = el("div"); stage.replaceChildren(slot);
+  if (!$("player").open) $("player").showModal();
+  const start = mem.prog[v.id] ? mem.prog[v.id].t : 0;
+  try {
+    await loadApi();
+    yt = new YT.Player(slot, {
+      videoId: v.id, host: "https://www.youtube-nocookie.com", width: "100%", height: "100%",
+      playerVars: { autoplay: 1, rel: 0, start, playsinline: 1, modestbranding: 1 },
+      events: {
+        onStateChange: e => { if (e.data === 0) { saveProgress(); mem.seen[v.id] = Date.now(); delete mem.prog[v.id]; save(); upNext(v); } },
+        onError: e => { if ([100, 101, 150].includes(e.data)) blocked(v); },
+      },
+    });
+    ticker = setInterval(saveProgress, 10000);
+  } catch (e) {
+    const f = el("iframe");
+    f.src = "https://www.youtube-nocookie.com/embed/" + v.id + "?autoplay=1&rel=0&start=" + start;
+    f.allow = "autoplay; fullscreen; encrypted-media; picture-in-picture"; f.allowFullscreen = true; f.title = v.title;
+    stage.replaceChildren(f);
+  }
+}
+function stopPlayer() {
+  saveProgress();
+  clearInterval(ticker); clearInterval(countdown);
+  try { if (yt && yt.destroy) yt.destroy(); } catch (e) {}
+  yt = null;
+}
+function closePlayer() { stopPlayer(); current = null; $("stage").replaceChildren(); if ($("player").open) $("player").close(); render(); }
+$("p-close").addEventListener("click", closePlayer);
+$("player").addEventListener("cancel", e => { e.preventDefault(); closePlayer(); });
+document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => { b.closest("dialog").close(); render(); }));
+
+/* Stin Ygeia Mas season view */
+function openShow() {
+  const eps = {};
+  for (const v of all) for (const d of v.dates || []) {
+    const cur = eps[d];
+    if (!cur || (cur.clip !== "full" && v.clip === "full")) eps[d] = v;
+  }
+  const seasonOf = d => { const y = +d.slice(0, 4), m = +d.slice(5, 7); return m >= 8 ? y : y - 1; };
+  const seasons = [...new Set(Object.keys(eps).map(seasonOf))].sort((a, b) => b - a);
+  let pick = seasons[0];
+  const body = $("show-body");
+  const top = el("div", "d-copy"); top.style.marginTop = "0"; top.style.paddingTop = "64px";
+  top.append(el("h2", "", "Στην υγειά μας"), el("div", "line", Object.keys(eps).length + " episodes with a video, 2004 to 2021"));
+  const chips = el("div", "chips seasons");
+  const rows = el("div", "eps");
+  const draw = () => {
+    chips.replaceChildren(...seasons.map(y => {
+      const b = el("button", "", y + "–" + String(y + 1).slice(2)); b.type = "button";
+      b.setAttribute("aria-pressed", String(y === pick));
+      b.addEventListener("click", () => { pick = y; draw(); });
+      return b;
+    }));
+    const days = Object.keys(eps).filter(d => seasonOf(d) === pick).sort();
+    rows.replaceChildren(...days.map(d => {
+      const v = eps[d];
+      const b = el("button", "ep"); b.type = "button";
+      const copy = el("div");
+      const when = new Date(d + "T12:00:00Z").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric", timeZone: "UTC" });
+      copy.append(el("div", "sub", when + (v.clip === "songs" ? " · Songs only" : "")), el("div", "name", v.title));
+      b.append(artFor(v), copy);
+      b.addEventListener("click", () => openDetail(v));
+      return b;
+    }));
+  };
+  draw();
+  body.replaceChildren(top, chips, rows);
+  $("show").showModal();
+  $("show").scrollTop = 0;
+}
+
+/* Browse */
+function chipRow(id, names, key) {
   $(id).replaceChildren(...names.map(name => {
     const b = el("button", "", name);
     b.type = "button";
     b.setAttribute("aria-pressed", String(state[key] === name));
-    b.addEventListener("click", () => { state[key] = name; chips(id, names, key); render(); });
+    b.addEventListener("click", () => { state[key] = name; chipRow(id, names, key); render(); });
     return b;
   }));
 }
@@ -171,41 +394,50 @@ function filtered() {
   const q = fold($("q").value.trim());
   const len = Number($("len").value), quality = $("quality").value, artist = $("artist").value;
   const out = all.filter(v =>
-    (state.type === "All" || v.type === state.type) &&
-    (state.style === "All styles" || v.style === state.style) &&
+    (state.type === "All" || v.type === state.type) && (state.style === "All styles" || v.style === state.style) &&
     v.mins >= len && (!artist || v.artist === artist) &&
     (quality === "all" || (quality === "hd" ? v.quality !== "SD" : v.quality === "4K")) &&
     (!q || q.split(/\s+/).every(w => v.text.includes(w) || v.text.includes(toGreek(w)))));
-  const sort = $("sort").value;
   const by = { best, long: (a, b) => b.mins - a.mins, short: (a, b) => a.mins - b.mins,
     new: (a, b) => (a.age ?? 1e9) - (b.age ?? 1e9), az: (a, b) => a.title.localeCompare(b.title, "el") };
-  return out.sort(by[sort]);
+  return out.sort(by[$("sort").value]);
 }
 function isDefault() {
   return state.type === "All" && state.style === "All styles" && !$("q").value.trim() && $("len").value === "0" &&
     $("quality").value === "all" && !$("artist").value && $("sort").value === "best";
 }
-function shelf(title, videos) {
-  const s = el("section", "shelf");
-  s.append(el("h2", "", title));
-  const t = el("div", "track");
-  t.append(...videos.slice(0, 24).map(tile));
-  s.append(t);
-  return s;
-}
 function renderShelves() {
   const by = all.slice().sort(best);
-  const main = $("main");
-  main.replaceChildren(
-    shelf("Full concerts", by.filter(v => v.type === "Concerts" && v.mins >= 60)),
-    shelf("Στην υγειά μας", by.filter(v => v.type === "Stin Ygeia Mas" && v.clip === "full")),
-    shelf("Epirus", by.filter(v => v.style === "Epirus")),
-    shelf("Laïko nights", by.filter(v => v.style === "Laïko" && v.type !== "Stin Ygeia Mas")),
-    shelf("Rebetiko", by.filter(v => v.style === "Rebetiko")),
-    shelf("Entechno", by.filter(v => v.style === "Entechno")),
-    shelf("Panigiri and glenti", by.filter(v => v.type === "Panigiri and Glenti")),
-    shelf("Greek pop live", by.filter(v => v.style === "Pop")),
-    shelf("Newest uploads", all.filter(v => v.age != null).sort((a, b) => a.age - b.age)));
+  const fresh = by.filter(v => !mem.seen[v.id]);
+  const going = Object.entries(mem.prog).sort((a, b) => b[1].at - a[1].at).map(e => byId[e[0]]).filter(Boolean);
+  const saved = mem.list.map(id => byId[id]).filter(Boolean);
+  const last = Object.entries({ ...mem.seen, ...Object.fromEntries(Object.entries(mem.prog).map(([k, p]) => [k, p.at])) }).sort((a, b) => b[1] - a[1]).map(e => byId[e[0]]).filter(Boolean)[0];
+  const counts = {};
+  all.forEach(v => { if (v.artist) (counts[v.artist] = counts[v.artist] || []).push(v); });
+  const artists = Object.keys(counts).filter(a => counts[a].length >= 8).sort((a, b) => counts[b].length - counts[a].length).slice(0, 18)
+    .map(a => artistTile(a, counts[a].slice().sort(best)));
+  const showCard = el("button", "tile artist"); showCard.type = "button";
+  const sample = by.find(v => v.type === "Stin Ygeia Mas" && v.clip === "full" && v.quality !== "SD") || by[0];
+  const art = el("div", "art"); const im = el("img"); im.src = sample.thumb; im.alt = ""; art.append(im, el("div", "label", "All seasons"));
+  showCard.append(art, el("div", "sub", "Browse by season"));
+  showCard.addEventListener("click", openShow);
+  const shelves = [
+    shelf("Continue watching", tiles(going)),
+    shelf("My List", tiles(saved)),
+    last ? shelf("Because you watched " + last.title.slice(0, 44), tiles(similar(last))) : null,
+    shelf("Στην υγειά μας", [showCard, ...tiles(fresh.filter(v => v.type === "Stin Ygeia Mas" && v.clip === "full"), 20)]),
+    shelf("Full concerts", tiles(fresh.filter(v => v.type === "Concerts" && v.mins >= 60))),
+    shelf("Artists", artists),
+    shelf("Sounds of Epirus", tiles(fresh.filter(v => v.style === "Epirus"))),
+    shelf("Saturday night laïko", tiles(fresh.filter(v => v.style === "Laïko" && v.type !== "Stin Ygeia Mas"))),
+    shelf("Late-night rebetiko", tiles(fresh.filter(v => v.style === "Rebetiko"))),
+    shelf("Long nights: 2 hours or more", tiles(fresh.filter(v => v.mins >= 120 && v.type !== "Stin Ygeia Mas"))),
+    shelf("Entechno evenings", tiles(fresh.filter(v => v.style === "Entechno"))),
+    shelf("Panigiri and glenti", tiles(fresh.filter(v => v.type === "Panigiri and Glenti"))),
+    shelf("Greek pop live", tiles(fresh.filter(v => v.style === "Pop"))),
+    shelf("Recently uploaded", tiles(all.filter(v => v.age != null).sort((a, b) => a.age - b.age))),
+  ].filter(Boolean);
+  $("main").replaceChildren(...shelves);
 }
 function more() {
   const wall = $("wall");
@@ -229,26 +461,86 @@ function render() {
   observer = new IntersectionObserver(e => { if (e[0].isIntersecting) more(); }, { rootMargin: "900px" });
   observer.observe(end);
 }
-function hero() {
-  const pool = all.filter(v => v.quality !== "SD" && v.type === "Concerts" && v.mins >= 60);
-  const v = pool[Math.floor(Math.random() * pool.length)] || all[0];
+
+/* Rotating top shelf */
+function drawHero() {
+  const v = heroPicks[heroIndex];
   const img = el("img"); img.src = v.thumb; img.alt = "";
   const copy = el("div", "hero-copy");
   const go = el("button", "btn main", "Play"); go.type = "button"; go.addEventListener("click", () => play(v));
-  const cta = el("div", "cta"); cta.append(go);
-  copy.append(el("h1", "", v.title), el("div", "line", [v.length, v.style, v.channel].filter(Boolean).join(" · ")), cta);
+  const info = el("button", "btn", "More info"); info.type = "button"; info.addEventListener("click", () => openDetail(v));
+  const cta = el("div", "cta"); cta.append(go, info);
+  const dots = el("div", "dots");
+  heroPicks.forEach((_, i) => {
+    const b = el("button"); b.type = "button"; b.setAttribute("aria-label", "Featured " + (i + 1));
+    b.setAttribute("aria-current", String(i === heroIndex)); b.append(el("span"));
+    b.addEventListener("click", () => { heroIndex = i; drawHero(); });
+    dots.append(b);
+  });
+  copy.append(el("h1", "", v.title), el("div", "line", [v.length, v.style, v.channel].filter(Boolean).join(" · ")), cta, dots);
   $("hero").replaceChildren(img, copy);
 }
+function startHero() {
+  const day = Math.floor(Date.now() / 86400000);
+  const pool = all.filter(v => v.quality !== "SD" && v.type === "Concerts" && v.mins >= 60 && !mem.seen[v.id]);
+  heroPicks = Array.from({ length: Math.min(5, pool.length) }, (_, i) => pool[(day * 7 + i * 37) % pool.length]);
+  if (!heroPicks.length) heroPicks = [all[0]];
+  drawHero();
+  const hero = $("hero");
+  let paused = false;
+  hero.addEventListener("mouseenter", () => { paused = true; });
+  hero.addEventListener("mouseleave", () => { paused = false; });
+  hero.addEventListener("focusin", () => { paused = true; });
+  hero.addEventListener("focusout", () => { paused = false; });
+  if (!reduced && heroPicks.length > 1) heroTimer = setInterval(() => {
+    if (paused || document.querySelector("dialog[open]") || hero.hidden) return;
+    heroIndex = (heroIndex + 1) % heroPicks.length; drawHero();
+  }, 9000);
+}
+
+/* Remote and arrow-key navigation between tiles */
+document.addEventListener("keydown", e => {
+  if (!["ArrowLeft", "ArrowRight", "ArrowUp", "ArrowDown"].includes(e.key)) return;
+  const from = document.activeElement;
+  if (!from || !from.matches(".tile, .ep, .chips button")) return;
+  const scope = from.closest("dialog") || document;
+  const a = from.getBoundingClientRect();
+  const dx = e.key === "ArrowRight" ? 1 : e.key === "ArrowLeft" ? -1 : 0;
+  const dy = e.key === "ArrowDown" ? 1 : e.key === "ArrowUp" ? -1 : 0;
+  let target = null, score = Infinity;
+  scope.querySelectorAll(".tile, .ep, .chips button").forEach(n => {
+    if (n === from) return;
+    const b = n.getBoundingClientRect();
+    if (!b.width) return;
+    const x = (b.left + b.right - a.left - a.right) / 2, y = (b.top + b.bottom - a.top - a.bottom) / 2;
+    if ((dx && x * dx <= 4) || (dy && y * dy <= 4)) return;
+    const s = dx ? Math.abs(x) + Math.abs(y) * 4 : Math.abs(y) + Math.abs(x) * 2;
+    if (s < score) { score = s; target = n; }
+  });
+  if (target) { e.preventDefault(); target.focus({ preventScroll: true }); target.scrollIntoView({ block: "center", inline: "center", behavior: reduced ? "auto" : "smooth" }); }
+});
+
+$("home").addEventListener("click", () => {
+  state.type = "All"; state.style = "All styles";
+  ["q", "artist"].forEach(id => { $(id).value = ""; });
+  $("len").value = "0"; $("quality").value = "all"; $("sort").value = "best";
+  chipRow("types", TYPES, "type"); chipRow("styles", STYLES, "style"); render(); scrollTo({ top: 0 });
+});
+$("surprise").addEventListener("click", () => {
+  const pool = all.filter(v => v.mins >= 45 && v.quality !== "SD" && !mem.seen[v.id]);
+  play(pool[Math.floor(Math.random() * pool.length)] || all[0]);
+});
+
 async function start() {
   const res = await fetch("data.json");
   all = await res.json();
-  all.forEach(v => { v.text = fold(v.title + " " + v.channel + " " + v.artist); });
+  all.forEach(v => { v.text = fold(v.title + " " + v.channel + " " + v.artist); byId[v.id] = v; });
   const counts = {};
   all.forEach(v => { if (v.artist) counts[v.artist] = (counts[v.artist] || 0) + 1; });
   Object.keys(counts).sort((a, b) => a.localeCompare(b, "el")).forEach(a => { const o = el("option", "", a + " (" + counts[a] + ")"); o.value = a; $("artist").append(o); });
-  chips("types", TYPES, "type"); chips("styles", STYLES, "style");
+  chipRow("types", TYPES, "type"); chipRow("styles", STYLES, "style");
   ["q", "len", "quality", "artist", "sort"].forEach(id => $(id).addEventListener("input", render));
-  hero(); render();
+  startHero(); render();
 }
 start().catch(() => { $("main").replaceChildren(el("p", "empty", "The library didn't load. Refresh the page to try again.")); });
 </script>

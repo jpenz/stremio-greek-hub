@@ -96,6 +96,9 @@ dialog::backdrop { background: #000; }
 .empty { padding: 40px var(--gl); color: var(--muted); }
 .note { color: var(--muted); font-size: .8125rem; padding: 22px var(--gr) 34px var(--gl); max-width: 70ch; }
 @media (max-width: 720px) {
+  .bar { flex-wrap: wrap; }
+  .brand { margin-right: auto; }
+  .bar input { order: 3; flex-basis: 100%; }
   .selects { grid-template-columns: 1fr 1fr; }
   .track { grid-auto-columns: 74vw; }
   .wall { grid-template-columns: 1fr; }

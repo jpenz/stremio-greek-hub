@@ -84,7 +84,22 @@ dialog::backdrop { background: #000; }
 .d-copy h2 { font: 400 clamp(1.6rem, 3.6vw, 2.6rem)/1.12 var(--display); margin: 0; overflow-wrap: anywhere; text-wrap: balance; }
 .facts { display: flex; flex-wrap: wrap; gap: 6px; }
 .facts span { background: var(--raise2); border-radius: 6px; padding: 3px 9px; font-size: .8125rem; font-weight: 600; }
-.stage { position: relative; width: 100%; height: 100%; background: #000; display: grid; }
+#player[open] { display: grid; grid-template-rows: minmax(0, 1fr) auto; overflow: hidden; }
+.stage { position: relative; width: 100%; height: 100%; min-height: 0; background: #000; display: grid; }
+.practice { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; padding: 10px var(--gr) max(10px, env(safe-area-inset-bottom, 0px)) var(--gl); background: var(--raise); }
+.practice .btn { padding: 8px 12px; }
+.practice select, .practice input { background: var(--raise2); border: 1px solid var(--line); border-radius: 8px; padding: 8px; color: var(--ink); min-width: 0; }
+.practice input { flex: 1 1 160px; }
+.practice .status { color: var(--muted); font-size: .8125rem; font-variant-numeric: tabular-nums; }
+.btn[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.songs { display: grid; gap: 2px; padding: 0 var(--gr) 8px var(--gl); max-width: 900px; }
+.songs h3 { font: 400 1.5rem/1.2 var(--display); margin: 12px 0 6px; }
+.songs button { display: grid; grid-template-columns: 76px minmax(0, 1fr); gap: 10px; background: none; border: 0; border-bottom: 1px solid var(--line); padding: 9px 4px; text-align: left; cursor: pointer; color: inherit; }
+.songs .at { color: var(--accent); font-weight: 600; font-variant-numeric: tabular-nums; }
+.extras { display: grid; gap: 18px; padding: 24px var(--gr) 10px var(--gl); max-width: 900px; }
+.extras h2 { font: 400 1.5rem/1.2 var(--display); margin: 0 0 6px; }
+.extras p { margin: 0 0 8px; color: var(--muted); }
+.extras textarea { width: 100%; min-height: 76px; background: var(--raise); border: 1px solid var(--line); border-radius: 8px; color: var(--ink); padding: 8px; font: 400 .8125rem var(--body); }
 .stage > div:first-child, .stage iframe { width: 100%; height: 100%; border: 0; }
 .next { position: absolute; right: var(--gr); bottom: 76px; width: min(340px, calc(100vw - 32px)); background: rgba(22,26,31,.96); border-radius: 12px; padding: 12px; display: grid; gap: 8px; z-index: 3; }
 .next img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; border-radius: 8px; }
@@ -135,7 +150,27 @@ dialog::backdrop { background: #000; }
 </div>
 <div class="count" id="count" aria-live="polite"></div>
 <main id="main"></main>
-<p class="note">Continue Watching and My List are saved on this device only. Videos are YouTube uploads, mostly by fans, so picture quality varies and some can disappear.</p>
+<section class="extras" aria-label="Calendars and backup">
+  <div>
+    <h2>Game calendars</h2>
+    <p>Subscribe once and your games appear in your phone's calendar, with an alert 30 minutes before.</p>
+    <div class="cta">
+      <a class="btn" href="webcal://jpenz.github.io/stremio-greek-hub/calendar/all.ics">All my teams</a>
+      <a class="btn" href="webcal://jpenz.github.io/stremio-greek-hub/calendar/aek.ics">AEK</a>
+      <a class="btn" href="webcal://jpenz.github.io/stremio-greek-hub/calendar/detroit.ics">Detroit</a>
+      <a class="btn" href="webcal://jpenz.github.io/stremio-greek-hub/calendar/msu.ics">Michigan State</a>
+      <a class="btn" href="webcal://jpenz.github.io/stremio-greek-hub/calendar/greek.ics">Greek clubs</a>
+    </div>
+  </div>
+  <div>
+    <h2>Move to another device</h2>
+    <p>Copy your code here, then paste it on your other device to bring over Continue Watching, My List and My Licks.</p>
+    <textarea id="code" aria-label="Backup code" placeholder="Paste a backup code here to restore"></textarea>
+    <div class="cta"><button class="btn" id="copy-code" type="button">Copy my code</button><button class="btn" id="load-code" type="button">Restore from code</button></div>
+    <p class="status" id="code-status" aria-live="polite"></p>
+  </div>
+</section>
+<p class="note">Continue Watching, My List and My Licks are saved on this device unless you move them with a code. Videos are YouTube uploads, mostly by fans, so picture quality varies and some can disappear.</p>
 
 <dialog id="detail" aria-label="Video details">
   <button class="btn close" data-close type="button">Close</button>
@@ -148,11 +183,26 @@ dialog::backdrop { background: #000; }
 <dialog id="player" aria-label="Video player">
   <button class="btn close" id="p-close" type="button">Close</button>
   <div class="stage" id="stage"></div>
+  <div class="practice" id="practice" aria-label="Practice controls">
+    <button class="btn" id="pr-toggle" type="button" aria-pressed="false">Practice</button>
+    <span id="pr-tools" hidden style="display:contents">
+      <button class="btn" id="pr-back" type="button">Back 5s</button>
+      <select id="pr-speed" aria-label="Speed"><option value="1">100%</option><option value="0.75">75%</option><option value="0.5">50%</option><option value="0.25">25%</option></select>
+      <button class="btn" id="pr-a" type="button">Set loop start</button>
+      <button class="btn" id="pr-b" type="button">Set loop end</button>
+      <button class="btn" id="pr-clear" type="button">Clear loop</button>
+      <select id="pr-mode" aria-label="Dromos"><option value="">Dromos</option><option>Rast</option><option>Ousak</option><option>Hijaz</option><option>Hijazkar</option><option>Sabah</option><option>Niavent</option><option>Kartsigar</option><option>Houzam</option><option>Pireotikos</option><option>Other</option></select>
+      <input id="pr-note" placeholder="Note, like opening phrase" aria-label="Lick note">
+      <button class="btn main" id="pr-save" type="button">Save lick</button>
+      <span class="status" id="pr-status" aria-live="polite"></span>
+    </span>
+  </div>
 </dialog>
 
 <script>
 const TYPES = ["All", "Concerts", "Stin Ygeia Mas", "Panigiri and Glenti", "TV Shows", "Tributes"];
-const STYLES = ["All styles", "Laïko", "Rebetiko", "Entechno", "Pop", "Epirus", "Regional"];
+const STYLES = ["All styles", "Panigyri Guitar", "Laïko", "Rebetiko", "Entechno", "Pop", "Epirus", "Regional"];
+const FAVORITES = ["Δημήτρης Μυστακίδης", "Σωκράτης Μάλαμας", "Θανάσης Παπακωνσταντίνου", "Γιάννης Χαρούλης", "Γιάννης Αγγελάκας", "Παύλος Παυλίδης", "Νατάσσα Μποφίλιου", "Μιχάλης Ατσάλης"];
 const rank = { "4K": 0, "HD": 1, "SD": 2 };
 const fold = s => (s || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/ς/g, "σ");
 const LATIN = { a:"α",b:"β",g:"γ",d:"δ",e:"ε",z:"ζ",i:"ι",k:"κ",l:"λ",m:"μ",n:"ν",x:"ξ",o:"ο",p:"π",r:"ρ",s:"σ",t:"τ",u:"υ",y:"υ",f:"φ",h:"χ",v:"β",c:"κ",w:"ω" };
@@ -166,8 +216,9 @@ let all = [], byId = {}, list = [], shown = 0, observer, heroTimer, heroIndex = 
 
 /* Per-device memory */
 const KEY = "greek-live-v1";
-let mem = { prog: {}, list: [], seen: {} };
+let mem = { prog: {}, list: [], seen: {}, licks: [] };
 try { mem = { ...mem, ...JSON.parse(localStorage.getItem(KEY) || "{}") }; } catch (e) {}
+const clock = s => { s = Math.floor(s); const h = Math.floor(s / 3600), m = Math.floor(s % 3600 / 60), x = String(s % 60).padStart(2, "0"); return h ? h + ":" + String(m).padStart(2, "0") + ":" + x : m + ":" + x; };
 const save = () => { try { localStorage.setItem(KEY, JSON.stringify(mem)); } catch (e) {} };
 const inList = id => mem.list.includes(id);
 const toggleList = id => { mem.list = inList(id) ? mem.list.filter(x => x !== id) : [id, ...mem.list]; save(); };
@@ -189,8 +240,20 @@ function artFor(v) {
 function tile(v) {
   const b = el("button", "tile");
   b.type = "button";
-  b.append(artFor(v), el("div", "name", v.title), el("div", "sub", [v.type, v.channel].filter(Boolean).join(" · ")));
+  const q = fold($("q").value.trim());
+  const song = q && (v.ch || []).find(c => fold(c[1]).includes(q) || fold(c[1]).includes(toGreek(q)));
+  const line = song ? "Song at " + clock(song[0]) + ": " + song[1] : [v.type, v.channel].filter(Boolean).join(" · ");
+  b.append(artFor(v), el("div", "name", v.title), el("div", "sub", line));
   b.addEventListener("click", () => openDetail(v));
+  return b;
+}
+function lickTile(lick) {
+  const v = byId[lick.id];
+  if (!v) return null;
+  const b = el("button", "tile"); b.type = "button";
+  const label = [lick.mode, lick.note].filter(Boolean).join(" · ") || "Saved lick";
+  b.append(artFor(v), el("div", "name", label), el("div", "sub", clock(lick.t) + (lick.end ? " to " + clock(lick.end) : "") + " · " + v.title));
+  b.addEventListener("click", () => play(v, { at: lick.t, end: lick.end }));
   return b;
 }
 function artistTile(name, videos) {
@@ -247,6 +310,17 @@ function openDetail(v) {
   }
   copy.append(el("h2", "", v.title), facts, el("div", "line", "Uploaded by " + (v.channel || "unknown")), cta);
   const parts = [hero, copy];
+  if (v.ch && v.ch.length) {
+    const songs = el("div", "songs");
+    songs.append(el("h3", "", "Songs"));
+    v.ch.forEach(c => {
+      const row = el("button"); row.type = "button";
+      row.append(el("span", "at", clock(c[0])), el("span", "", c[1]));
+      row.addEventListener("click", () => play(v, { at: c[0] }));
+      songs.append(row);
+    });
+    parts.push(songs);
+  }
   if (v.artist) {
     const more = all.filter(x => x.artist === v.artist && x.id !== v.id).sort(best);
     const s = shelf("More from " + v.artist, tiles(more, 18));
@@ -306,13 +380,15 @@ function upNext(v) {
   countdown = setInterval(() => { left -= 1; label.textContent = "Up next in " + left + " seconds"; if (left <= 0) go(); }, 1000);
   now.focus();
 }
-async function play(v) {
+async function play(v, opts = {}) {
   stopPlayer();
   current = v;
+  loopA = opts.end ? opts.at : null; loopB = opts.end || null; showLoop();
+  $("pr-speed").value = "1";
   const stage = $("stage");
   const slot = el("div"); stage.replaceChildren(slot);
   if (!$("player").open) $("player").showModal();
-  const start = mem.prog[v.id] ? mem.prog[v.id].t : 0;
+  const start = opts.at != null ? Math.floor(opts.at) : mem.prog[v.id] ? mem.prog[v.id].t : 0;
   try {
     await loadApi();
     yt = new YT.Player(slot, {
@@ -331,6 +407,39 @@ async function play(v) {
     stage.replaceChildren(f);
   }
 }
+/* Practice Mode */
+let loopA = null, loopB = null;
+const now = () => (yt && yt.getCurrentTime ? yt.getCurrentTime() : 0);
+function showLoop() { $("pr-status").textContent = loopA != null ? "Loop " + clock(loopA) + (loopB ? " to " + clock(loopB) : " to ...") : ""; }
+setInterval(() => { if (yt && yt.getCurrentTime && loopA != null && loopB && now() >= loopB) yt.seekTo(loopA, true); }, 200);
+$("pr-toggle").addEventListener("click", () => {
+  const on = $("pr-toggle").getAttribute("aria-pressed") !== "true";
+  $("pr-toggle").setAttribute("aria-pressed", String(on));
+  $("pr-tools").hidden = !on;
+});
+$("pr-back").addEventListener("click", () => { if (yt) yt.seekTo(Math.max(0, now() - 5), true); });
+$("pr-speed").addEventListener("input", () => { if (yt && yt.setPlaybackRate) yt.setPlaybackRate(Number($("pr-speed").value)); });
+$("pr-a").addEventListener("click", () => { loopA = now(); if (loopB && loopB <= loopA) loopB = null; showLoop(); });
+$("pr-b").addEventListener("click", () => { if (loopA == null) loopA = Math.max(0, now() - 10); if (now() > loopA) loopB = now(); showLoop(); });
+$("pr-clear").addEventListener("click", () => { loopA = loopB = null; showLoop(); });
+$("pr-save").addEventListener("click", () => {
+  if (!current) return;
+  mem.licks = [{ id: current.id, t: Math.floor(loopA != null ? loopA : now()), end: loopB ? Math.ceil(loopB) : null, note: $("pr-note").value.trim(), mode: $("pr-mode").value, at: Date.now() }, ...mem.licks];
+  save(); $("pr-note").value = ""; $("pr-status").textContent = "Saved to My Licks";
+});
+$("copy-code").addEventListener("click", async () => {
+  const code = btoa(unescape(encodeURIComponent(JSON.stringify(mem))));
+  $("code").value = code;
+  try { await navigator.clipboard.writeText(code); $("code-status").textContent = "Copied. Paste it on your other device."; }
+  catch (e) { $("code").select(); $("code-status").textContent = "Select the code above and copy it."; }
+});
+$("load-code").addEventListener("click", () => {
+  try {
+    const got = JSON.parse(decodeURIComponent(escape(atob($("code").value.trim()))));
+    mem = { prog: { ...mem.prog, ...got.prog }, seen: { ...mem.seen, ...got.seen }, list: [...new Set([...(got.list || []), ...mem.list])], licks: [...(got.licks || []), ...mem.licks].filter((l, i, arr) => arr.findIndex(x => x.id === l.id && x.t === l.t) === i) };
+    save(); render(); $("code-status").textContent = "Restored.";
+  } catch (e) { $("code-status").textContent = "That code didn't work. Copy it again and retry."; }
+});
 function stopPlayer() {
   saveProgress();
   clearInterval(ticker); clearInterval(countdown);
@@ -427,7 +536,11 @@ function renderShelves() {
   const shelves = [
     shelf("Continue watching", tiles(going)),
     shelf("My List", tiles(saved)),
+    shelf("My licks", mem.licks.map(lickTile).filter(Boolean)),
     last ? shelf("Because you watched " + last.title.slice(0, 44), tiles(similar(last))) : null,
+    shelf("Panigyri guitar", tiles(fresh.filter(v => v.style === "Panigyri Guitar"))),
+    shelf("Kostas Soukas and friends", tiles(fresh.filter(v => /Σούκας|Πίτσος|Σούτας/.test(v.artist)))),
+    shelf("Your favorites", tiles(fresh.filter(v => FAVORITES.includes(v.artist)).sort((x, y) => (x.id > y.id ? 1 : -1)))),
     shelf("Στην υγειά μας", [showCard, ...tiles(fresh.filter(v => v.type === "Stin Ygeia Mas" && v.clip === "full"), 20)]),
     shelf("Full concerts", tiles(fresh.filter(v => v.type === "Concerts" && v.mins >= 60))),
     shelf("Artists", artists),
@@ -537,7 +650,7 @@ $("surprise").addEventListener("click", () => {
 async function start() {
   const res = await fetch("data.json");
   all = await res.json();
-  all.forEach(v => { v.text = fold(v.title + " " + v.channel + " " + v.artist); byId[v.id] = v; });
+  all.forEach(v => { v.text = fold(v.title + " " + v.channel + " " + v.artist + " " + (v.ch || []).map(c => c[1]).join(" ")); byId[v.id] = v; });
   const counts = {};
   all.forEach(v => { if (v.artist) counts[v.artist] = (counts[v.artist] || 0) + 1; });
   Object.keys(counts).sort((a, b) => a.localeCompare(b, "el")).forEach(a => { const o = el("option", "", a + " (" + counts[a] + ")"); o.value = a; $("artist").append(o); });

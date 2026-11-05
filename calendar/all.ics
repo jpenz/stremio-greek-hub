@@ -1,0 +1,907 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Greek Hub//Game Board//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+X-WR-CALNAME:My Teams
+X-PUBLISHED-TTL:PT6H
+REFRESH-INTERVAL;VALUE=DURATION:PT6H
+BEGIN:VEVENT
+UID:401915819@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261105T200000Z
+DTEND:20261105T230000Z
+SUMMARY:CSKA Sofia at Panathinaikos
+DESCRIPTION:UEFA Conference League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915819/cska-sofia-pa
+ nathinaikos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:CSKA Sofia at Panathinaikos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401892649@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261106T000000Z
+DTEND:20261106T030000Z
+SUMMARY:Vegas Golden Knights at Detroit Red Wings
+DESCRIPTION:NHL. Watch: ESPN+\, Scripps Sports\, DSN.
+URL:https://www.espn.com/nhl/game/_/gameId/401892649/golden-knights-re
+ d-wings
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Vegas Golden Knights at Detroit Red Wings
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401925754@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261106T010000Z
+DTEND:20261106T040000Z
+SUMMARY:Toledo Rockets at Michigan State Spartans
+DESCRIPTION:Men's College Basketball. Watch: Peacock.
+URL:https://www.espn.com/mens-college-basketball/game/_/gameId/4019257
+ 54/toledo-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Toledo Rockets at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401904710@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261107T000000Z
+DTEND:20261107T030000Z
+SUMMARY:Boston University Terriers at Michigan State Spartans
+DESCRIPTION:College Hockey. Watch: B1G+.
+URL:https://www.espn.com/mens-college-hockey/video?gameId=401904710
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Boston University Terriers at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896732@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261107T173000Z
+DTEND:20261107T203000Z
+SUMMARY:Panetolikos at Aris
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896732/panetolikos-a
+ ris
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panetolikos at Aris
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401927075@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261107T190000Z
+DTEND:20261107T220000Z
+SUMMARY:Michigan State Spartans at Toledo Rockets
+DESCRIPTION:Women's College Basketball. Watch: ESPN+.
+URL:https://www.espn.com/womens-college-basketball/game/_/gameId/40192
+ 7075/michigan-st-toledo
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Toledo Rockets
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401904711@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261107T213000Z
+DTEND:20261108T003000Z
+SUMMARY:Boston University Terriers at Michigan State Spartans
+DESCRIPTION:College Hockey. Watch: No US TV listing yet.
+URL:https://www.espn.com/mens-college-hockey/video?gameId=401904711
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Boston University Terriers at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401858511@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T003000Z
+DTEND:20261108T033000Z
+SUMMARY:Michigan State Spartans at Michigan Wolverines
+DESCRIPTION:College Football. Watch: Peacock.
+URL:https://www.espn.com/college-football/game/_/gameId/401858511/mich
+ igan-st-michigan
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Michigan Wolverines
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401892671@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T020000Z
+DTEND:20261108T050000Z
+SUMMARY:Detroit Red Wings at Colorado Avalanche
+DESCRIPTION:NHL. Watch: ESPN+\, DSN\, Altitude Sports.
+URL:https://www.espn.com/nhl/game/_/gameId/401892671/red-wings-avalanc
+ he
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Red Wings at Colorado Avalanche
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896733@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T150000Z
+DTEND:20261108T180000Z
+SUMMARY:Levadiakos at AEK Athens
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896733/levadiakos-ae
+ k-athens
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Levadiakos at AEK Athens
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896811@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T153000Z
+DTEND:20261108T183000Z
+SUMMARY:Panathinaikos at Iraklis
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896811/panathinaikos
+ -iraklis
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panathinaikos at Iraklis
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401873042@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T180000Z
+DTEND:20261108T210000Z
+SUMMARY:Detroit Lions at Miami Dolphins
+DESCRIPTION:NFL. Watch: Fox.
+URL:https://www.espn.com/nfl/game/_/gameId/401873042/lions-dolphins
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Lions at Miami Dolphins
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896730@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T190000Z
+DTEND:20261108T220000Z
+SUMMARY:PAOK at Olympiacos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896730/paok-olympiac
+ os
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PAOK at Olympiacos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401909946@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261108T230000Z
+DTEND:20261109T020000Z
+SUMMARY:Los Angeles Lakers at Detroit Pistons
+DESCRIPTION:NBA. Watch: NBA TV\, Spectrum Sports Net\, Spectrum Sports
+  Net +.
+URL:https://www.espn.com/nba/game/_/gameId/401909946/lakers-pistons
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Los Angeles Lakers at Detroit Pistons
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401909954@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261110T000000Z
+DTEND:20261110T030000Z
+SUMMARY:Washington Wizards at Detroit Pistons
+DESCRIPTION:NBA. Watch: NBCSN.
+URL:https://www.espn.com/nba/game/_/gameId/401909954/wizards-pistons
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Washington Wizards at Detroit Pistons
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401909564@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261111T000000Z
+DTEND:20261111T030000Z
+SUMMARY:Michigan State Spartans at Duke Blue Devils
+DESCRIPTION:Men's College Basketball. Watch: ESPN.
+URL:https://www.espn.com/mens-college-basketball/game/_/gameId/4019095
+ 64/michigan-st-duke
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Duke Blue Devils
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401892687@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261111T010000Z
+DTEND:20261111T040000Z
+SUMMARY:Detroit Red Wings at St. Louis Blues
+DESCRIPTION:NHL. Watch: TNT\, truTV.
+URL:https://www.espn.com/nhl/game/_/gameId/401892687/red-wings-blues
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Red Wings at St. Louis Blues
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401927076@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261111T233000Z
+DTEND:20261112T023000Z
+SUMMARY:Oakland Golden Grizzlies at Michigan State Spartans
+DESCRIPTION:Women's College Basketball. Watch: B1G+.
+URL:https://www.espn.com/womens-college-basketball/game/_/gameId/40192
+ 7076/oakland-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Oakland Golden Grizzlies at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401909977@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261113T000000Z
+DTEND:20261113T030000Z
+SUMMARY:Detroit Pistons at Washington Wizards
+DESCRIPTION:NBA. Watch: MNMT.
+URL:https://www.espn.com/nba/game/_/gameId/401909977/pistons-wizards
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Pistons at Washington Wizards
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401923153@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261113T000000Z
+DTEND:20261113T030000Z
+SUMMARY:Michigan State Spartans at Notre Dame Fighting Irish
+DESCRIPTION:College Hockey. Watch: No US TV listing yet.
+URL:https://www.espn.com/mens-college-hockey/video?gameId=401923153
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Notre Dame Fighting Irish
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401892699@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261113T003000Z
+DTEND:20261113T033000Z
+SUMMARY:Detroit Red Wings at Florida Panthers
+DESCRIPTION:NHL. Watch: Disney+\, ESPN+\, Hulu.
+URL:https://www.espn.com/nhl/game/_/gameId/401892699/red-wings-panther
+ s
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Red Wings at Florida Panthers
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401925755@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261114T000000Z
+DTEND:20261114T030000Z
+SUMMARY:Northern Iowa Panthers at Michigan State Spartans
+DESCRIPTION:Men's College Basketball. Watch: FS1.
+URL:https://www.espn.com/mens-college-basketball/game/_/gameId/4019257
+ 55/northern-iowa-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Northern Iowa Panthers at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401923155@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261114T000000Z
+DTEND:20261114T030000Z
+SUMMARY:Michigan State Spartans at Notre Dame Fighting Irish
+DESCRIPTION:College Hockey. Watch: No US TV listing yet.
+URL:https://www.espn.com/mens-college-hockey/video?gameId=401923155
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Notre Dame Fighting Irish
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401858521@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261114T211500Z
+DTEND:20261115T001500Z
+SUMMARY:Washington Huskies at Michigan State Spartans
+DESCRIPTION:College Football. Watch: BTN.
+URL:https://www.espn.com/college-football/game/_/gameId/401858521/wash
+ ington-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Washington Huskies at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401892712@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261115T000000Z
+DTEND:20261115T030000Z
+SUMMARY:Detroit Red Wings at Tampa Bay Lightning
+DESCRIPTION:NHL. Watch: ESPN+\, DSN\, The Spot - MTN.
+URL:https://www.espn.com/nhl/game/_/gameId/401892712/red-wings-lightni
+ ng
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Red Wings at Tampa Bay Lightning
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401909982@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261115T010000Z
+DTEND:20261115T040000Z
+SUMMARY:Detroit Pistons at Miami Heat
+DESCRIPTION:NBA. Watch: NBA TV.
+URL:https://www.espn.com/nba/game/_/gameId/401909982/pistons-heat
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Pistons at Miami Heat
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401873053@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261115T143000Z
+DTEND:20261115T173000Z
+SUMMARY:New England Patriots at Detroit Lions
+DESCRIPTION:NFL. Watch: Fox.
+URL:https://www.espn.com/nfl/game/_/gameId/401873053/patriots-lions
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:New England Patriots at Detroit Lions
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401913858@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261115T190000Z
+DTEND:20261115T220000Z
+SUMMARY:Michigan State Spartans at Harvard Crimson
+DESCRIPTION:Women's College Basketball. Watch: ESPN+.
+URL:https://www.espn.com/womens-college-basketball/game/_/gameId/40191
+ 3858/michigan-st-harvard
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Harvard Crimson
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401910004@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261118T010000Z
+DTEND:20261118T040000Z
+SUMMARY:Detroit Pistons at San Antonio Spurs
+DESCRIPTION:NBA. Watch: NBC.
+URL:https://www.espn.com/nba/game/_/gameId/401910004/pistons-spurs
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Pistons at San Antonio Spurs
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401906851@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261118T020000Z
+DTEND:20261118T050000Z
+SUMMARY:Michigan State Spartans at Tennessee Volunteers
+DESCRIPTION:Men's College Basketball. Watch: ESPN2.
+URL:https://www.espn.com/mens-college-basketball/game/_/gameId/4019068
+ 51/michigan-st-tennessee
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Tennessee Volunteers
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401919438@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261119T233000Z
+DTEND:20261120T023000Z
+SUMMARY:Sacred Heart Pioneers at Michigan State Spartans
+DESCRIPTION:Women's College Basketball. Watch: No US TV listing yet.
+URL:https://www.espn.com/womens-college-basketball/game/_/gameId/40191
+ 9438/sacred-heart-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Sacred Heart Pioneers at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401923159@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261121T000000Z
+DTEND:20261121T030000Z
+SUMMARY:Michigan State Spartans at Michigan Wolverines
+DESCRIPTION:College Hockey. Watch: No US TV listing yet.
+URL:https://www.espn.com/mens-college-hockey/video?gameId=401923159
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Michigan Wolverines
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401858529@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261121T010000Z
+DTEND:20261121T040000Z
+SUMMARY:Oregon Ducks at Michigan State Spartans
+DESCRIPTION:College Football. Watch: Fox.
+URL:https://www.espn.com/college-football/game/_/gameId/401858529/oreg
+ on-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Oregon Ducks at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401925756@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261121T170000Z
+DTEND:20261121T200000Z
+SUMMARY:Detroit Mercy Titans at Michigan State Spartans
+DESCRIPTION:Men's College Basketball. Watch: BTN.
+URL:https://www.espn.com/mens-college-basketball/game/_/gameId/4019257
+ 56/detroit-mercy-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Mercy Titans at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896810@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261121T173000Z
+DTEND:20261121T203000Z
+SUMMARY:AEK Athens at Kalamata
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896810/aek-athens-ka
+ lamata
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AEK Athens at Kalamata
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896726@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261122T153000Z
+DTEND:20261122T183000Z
+SUMMARY:OFI Crete at Panathinaikos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896726/ofi-crete-pan
+ athinaikos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:OFI Crete at Panathinaikos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896809@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261122T170000Z
+DTEND:20261122T200000Z
+SUMMARY:Iraklis at Olympiacos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896809/iraklis-olymp
+ iacos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Iraklis at Olympiacos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896724@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261122T173000Z
+DTEND:20261122T203000Z
+SUMMARY:Kifisia at PAOK
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896724/kifisia-paok
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Kifisia at PAOK
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401873072@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261122T180000Z
+DTEND:20261122T210000Z
+SUMMARY:Tampa Bay Buccaneers at Detroit Lions
+DESCRIPTION:NFL. Watch: CBS.
+URL:https://www.espn.com/nfl/game/_/gameId/401873072/buccaneers-lions
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Tampa Bay Buccaneers at Detroit Lions
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896728@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261123T150000Z
+DTEND:20261123T180000Z
+SUMMARY:Aris at Asteras Tripoli
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896728/aris-asteras-
+ tripoli
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Aris at Asteras Tripoli
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401916024@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261123T170000Z
+DTEND:20261123T200000Z
+SUMMARY:Alcorn State Lady Braves at Michigan State Spartans
+DESCRIPTION:Women's College Basketball. Watch: No US TV listing yet.
+URL:https://www.espn.com/womens-college-basketball/game/_/gameId/40191
+ 6024/alcorn-st-michigan-st
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Alcorn State Lady Braves at Michigan State Spartans
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915296@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261124T200000Z
+DTEND:20261124T230000Z
+SUMMARY:AEK Athens at Como
+DESCRIPTION:UEFA Champions League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915296/aek-athens-co
+ mo
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AEK Athens at Como
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915521@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261126T174500Z
+DTEND:20261126T204500Z
+SUMMARY:AC Milan at Olympiacos
+DESCRIPTION:UEFA Europa League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915521/ac-milan-olym
+ piacos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AC Milan at Olympiacos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401873081@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261126T180000Z
+DTEND:20261126T210000Z
+SUMMARY:Chicago Bears at Detroit Lions
+DESCRIPTION:NFL. Watch: CBS.
+URL:https://www.espn.com/nfl/game/_/gameId/401873081/bears-lions
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Chicago Bears at Detroit Lions
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915807@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261126T200000Z
+DTEND:20261126T230000Z
+SUMMARY:Panathinaikos at FC Nordsjælland
+DESCRIPTION:UEFA Conference League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915807/panathinaikos
+ -fc-nordsjælland
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panathinaikos at FC Nordsjælland
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401858542@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261128T050000Z
+DTEND:20261128T080000Z
+SUMMARY:Michigan State Spartans at Rutgers Scarlet Knights
+DESCRIPTION:College Football. Watch: No US TV listing yet.
+URL:https://www.espn.com/college-football/game/_/gameId/401858542/mich
+ igan-st-rutgers
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Michigan State Spartans at Rutgers Scarlet Knights
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896719@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261129T150000Z
+DTEND:20261129T180000Z
+SUMMARY:Panathinaikos at Atromitos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896719/panathinaikos
+ -atromitos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panathinaikos at Atromitos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896720@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261129T170000Z
+DTEND:20261129T200000Z
+SUMMARY:Olympiacos at Aris
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896720/olympiacos-ar
+ is
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Olympiacos at Aris
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896721@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261129T190000Z
+DTEND:20261129T220000Z
+SUMMARY:PAOK at AEK Athens
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896721/paok-aek-athe
+ ns
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:PAOK at AEK Athens
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896717@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261205T180000Z
+DTEND:20261205T210000Z
+SUMMARY:AEK Athens at Olympiacos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896717/aek-athens-ol
+ ympiacos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:AEK Athens at Olympiacos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896716@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261206T153000Z
+DTEND:20261206T183000Z
+SUMMARY:Aris at Panathinaikos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896716/aris-panathin
+ aikos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Aris at Panathinaikos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896714@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261206T173000Z
+DTEND:20261206T203000Z
+SUMMARY:Volos NFC at PAOK
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896714/volos-nfc-pao
+ k
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Volos NFC at PAOK
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401873098@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261206T180000Z
+DTEND:20261206T210000Z
+SUMMARY:Detroit Lions at Atlanta Falcons
+DESCRIPTION:NFL. Watch: CBS.
+URL:https://www.espn.com/nfl/game/_/gameId/401873098/lions-falcons
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Detroit Lions at Atlanta Falcons
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915289@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261208T200000Z
+DTEND:20261208T230000Z
+SUMMARY:Galatasaray at AEK Athens
+DESCRIPTION:UEFA Champions League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915289/galatasaray-a
+ ek-athens
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Galatasaray at AEK Athens
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915733@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261210T174500Z
+DTEND:20261210T204500Z
+SUMMARY:Panathinaikos at SC Freiburg
+DESCRIPTION:UEFA Conference League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915733/panathinaikos
+ -sc-freiburg
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panathinaikos at SC Freiburg
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915487@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261210T200000Z
+DTEND:20261210T230000Z
+SUMMARY:Olympiacos at NK Celje
+DESCRIPTION:UEFA Europa League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915487/olympiacos-nk
+ -celje
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Olympiacos at NK Celje
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896803@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261212T190000Z
+DTEND:20261212T220000Z
+SUMMARY:Aris at Iraklis
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896803/aris-iraklis
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Aris at Iraklis
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896712@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261213T150000Z
+DTEND:20261213T180000Z
+SUMMARY:Olympiacos at Atromitos
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896712/olympiacos-at
+ romitos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Olympiacos at Atromitos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896713@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261213T170000Z
+DTEND:20261213T200000Z
+SUMMARY:Volos NFC at AEK Athens
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896713/volos-nfc-aek
+ -athens
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Volos NFC at AEK Athens
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401896709@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261213T173000Z
+DTEND:20261213T203000Z
+SUMMARY:Panathinaikos at PAOK
+DESCRIPTION:Greek Super League. Watch: No US TV listing yet.
+URL:https://www.espn.com/soccer/match/_/gameId/401896709/panathinaikos
+ -paok
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Panathinaikos at PAOK
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+BEGIN:VEVENT
+UID:401915616@greekhub
+DTSTAMP:20261105T062005Z
+DTSTART:20261217T200000Z
+DTEND:20261217T230000Z
+SUMMARY:Brighton & Hove Albion at Panathinaikos
+DESCRIPTION:UEFA Conference League. Watch: Paramount+.
+URL:https://www.espn.com/soccer/match/_/gameId/401915616/brighton-hove
+ -albion-panathinaikos
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:Brighton & Hove Albion at Panathinaikos
+TRIGGER:-PT30M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
